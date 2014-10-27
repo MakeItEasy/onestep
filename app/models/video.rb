@@ -26,7 +26,9 @@ class Video < ActiveRecord::Base
     #   a = $1.split('x')
     #   a[0].to_f / a[1].to_f
     # end
-    `mediainfo '--Inform=Video; %DisplayAspectRatio%' #{asset_url}`
+    # 对应上传文件名中包含中文的情况
+    asset_full_path = (asset_url.split('/')[0..-2] << self.filename).join('/')
+    `mediainfo '--Inform=Video; %DisplayAspectRatio%' #{asset_full_path}`
   end
 
   private

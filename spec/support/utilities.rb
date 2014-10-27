@@ -2,9 +2,9 @@ module Utilities
 
   def sign_in(user)
     visit login_path
-    fill_in "Name",    with: user.name
-    fill_in "Password", with: user.password
-    click_button "Log In"
+    fill_in "login",    with: user.name
+    fill_in "password", with: user.password
+    click_button "登录"
   end
 
   def signup_with_attributes(name: "haoqi", email: "haoqi@cat.com", password: "123456")
